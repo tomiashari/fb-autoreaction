@@ -80,22 +80,18 @@ class Reaction
 			$r_start	= 'https://mobile.facebook.com/reactions/picker/?ft_id='.$post_id[1];			
 			$html 		= $this->curl($r_start);
 			$html 		= str_replace('&amp;','&',$html);
-			$r_males 	= '/ufi/reaction/?ft_ent_identifier='.$post_id[1].'&reaction_type='.$r_male;
-			$r_male_e	= $this->fetch_value($html,$r_males,'" style="display:block">');
-			$r_male_l	= "https://mobile.facebook.com/ufi/reaction/?ft_ent_identifier=$post_id[1]&reaction_type=$r_male$r_male_e";
-			
-			$r_females 	= '/ufi/reaction/?ft_ent_identifier='.$post_id[1].'&reaction_type='.$r_female;
-			$r_female_e	= $this->fetch_value($html,$r_females,'" style="display:block">');
-			$r_female_l	= "https://mobile.facebook.com/ufi/reaction/?ft_ent_identifier=$post_id[1]&reaction_type=$r_female$r_female_e";
-			
-			$userid 	= $post_id[0];
-			$user_gen 	= $this->gender_check($userid, $token);
 			
 			if($user_gen == 'female')
 			{
+				$r_females 	= '/ufi/reaction/?ft_ent_identifier='.$post_id[1].'&reaction_type='.$r_female;
+				$r_female_e	= $this->fetch_value($html,$r_females,'" style="display:block">');
+				$r_female_l	= 'https://mobile.facebook.com/ufi/reaction/?ft_ent_identifier='.$post_id[1].'&reaction_type='.$r_female. $r_female_e;
 				$this->curl($r_female_l);
 				echo "Status ID $post_id[1] => $user_gen => reacted \n";
 			}else{
+				$r_males 	= '/ufi/reaction/?ft_ent_identifier='.$post_id[1].'&reaction_type='.$r_male;
+				$r_male_e	= $this->fetch_value($html,$r_males,'" style="display:block">');
+				$r_male_l	= 'https://mobile.facebook.com/ufi/reaction/?ft_ent_identifier='.$post_id[1].'&reaction_type='.$r_male. $r_male_e;
 				$this->curl($r_male_l);
 				echo "Status ID $post_id[1] => $user_gen => reacted \n";
 			}
