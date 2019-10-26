@@ -3,11 +3,11 @@
 require_once('lib/fb.php');
 
 //////////////////////////////////////////////[edit authentication here]///////////////////////////////////////////
-$user		= 'lucifer.inside'; // facebook username / email
-$pass 		= 'toketkenyel'; // facebook passwod
-$r_male		= '3'; // reaction if user male , like = 1, love = 2, wow = 3, haha = 4, sad = 7, angry = 8
-$r_female	= '2'; // reaction if user female , like = 1, love = 2, wow = 3, haha = 4, sad = 7, angry = 8
-$max_status	= '20'; // maximum reacted status
+$user		= 'bokep.indo'; // username fb / email
+$pass 		= 'ngeweenak'; // pass fb
+$r_male		= '3'; // reaction if user male , like = 2, love = 4, wow = 6, haha = 5, sad = 9, angry = 8
+$r_female	= '2'; // reaction if user female , like = 2, love = 4, wow = 6, haha = 5, sad = 9, angry = 8
+$max_status	= '50'; // maximum reacted status
 $token 		= 'EaEaEa696969';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -19,3 +19,5 @@ if (!file_exists($config['cookie_file'])) {
 
 $reaction = new Reaction();
 $reaction->send_reaction($user, $pass, $token, $r_male, $r_female, $max_status);
+
+this is it 
